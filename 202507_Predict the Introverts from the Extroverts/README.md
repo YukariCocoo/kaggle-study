@@ -121,20 +121,19 @@ Kaggle Playground S5E7 の **二値分類（Introvert / Extrovert）**
 
 ---
 
-## 8. 変更履歴（v1 → v2 → vFinal）
+## 8. 変更履歴（v1 → vFinal）
 
 - **vFinal**（本ノート）
   - **比率系特徴量**を追加（Alone/Friends, Post/Friends, Social/Outside, Alone/Social）
+  - `RandomizedSearchCV(return_train_score=True)` で **汎化ギャップを可視化**
+  - **重み付き soft voting** を試行（train/val ギャップ基準）
+  - カテゴリ→数値の **明示キャスト**（`int` / `Int64`）
   - 比率生成で発生する `inf/-inf` を **NaN 置換 → 各列中央値で補完**
   - 欠損・型の **工程ごとの検証** を強化（`info()`, `isnull().sum()`）
   - LGBM / XGB / RF を再探索して **最適パラメータ更新**
   - **Voting は soft 等重み**（シンプルで頑健な構成）
   - **CV:** 0.9685 ± 0.0023
-- **v2**
-  - ydata-profiling による **詳細EDA**（欠損/相関の裏付け強化）
-  - カテゴリ→数値の **明示キャスト**（`int` / `Int64`）
-  - `RandomizedSearchCV(return_train_score=True)` で **汎化ギャップを可視化**
-  - **重み付き soft voting** を試行（train/val ギャップ基準）
+
 - **v1**
   - Cat分布ベース + Num分布ベース/予測補完（RF）の **ベースライン**
   - 相互作用特徴量（積）導入
